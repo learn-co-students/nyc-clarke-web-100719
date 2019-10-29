@@ -1,0 +1,13 @@
+ 
+<a href="/cats">All Cats</a> | <a href="/cats/
+<%=@cat.id%>/edit">Edit <%=@cat.name%></a> 
+<hr>
+<h3><%= @cat.name %></h3>
+<h6><%= @cat.breed %></h6>
+<h6><%= @cat.age %></h6>
+<img class='show-img' src="<%= @cat.img_url %>" alt="<%= @cat.name%>">
+
+<form action="/cats/<%= @cat.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value='DELETE <%=@cat.name.upcase%>!!!'>
+</form>

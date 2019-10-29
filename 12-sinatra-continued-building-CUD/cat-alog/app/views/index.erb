@@ -1,0 +1,15 @@
+
+<a href="/cats/new"> CREATE A NEW CAT</a>
+<hr>
+<div class="cat-container">
+  <% @cats.each do |cat| %>
+    <div class='cat'>
+      <h3> <a href="/cats/<%=cat.id%>"> <%= cat.name %></a></h3>
+      <img class='index-img' src="<%=cat.img_url%>" alt="<%=cat.name%>"> 
+      <h6>Breed: <%= cat.breed %></h6> 
+      <h6>Age: <%= cat.age%></h6>
+    </div>
+  <% end %>
+</div>
+
+
