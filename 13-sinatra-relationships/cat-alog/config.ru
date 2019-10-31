@@ -6,4 +6,6 @@ end
 
 
 # use Rack::MethodOverride
+use TrainersController
+use CatsController
 run ApplicationController

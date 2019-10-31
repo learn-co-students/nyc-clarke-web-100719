@@ -5,3 +5,4 @@ cat_img_urls = ["https://www.top13.net/wp-content/uploads/2015/10/perfectly-time
 cat_img_urls.each do |img|
   Cat.create(name: Faker::Creature::Cat.name, breed: Faker::Creature::Cat.breed, age: Faker::Number.within(range: 1..100), img_url: img)
 end 
+

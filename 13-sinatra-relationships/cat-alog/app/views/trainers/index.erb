@@ -1,0 +1,9 @@
+<div class="group-container">
+  <% @trainers.each do |trainer| %>
+    <div class='group-item'>
+      <h3> <%= trainer.name %></></h3>
+      <img class='index-img' src="<%=trainer.img_url%>" alt="<%=trainer.name%>"> 
+      <h5>My true love is: <a href="/cats/<%= trainer.cat_id %>"><%= trainer.cat.name %></a></h5>
+    </div>
+  <% end %>
+</div>

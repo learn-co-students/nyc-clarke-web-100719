@@ -1,35 +1,27 @@
-require './config/environment'
-
-class ApplicationController < Sinatra::Base
-
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-    set :method_override, true
-  end
-
+class CatsController < ApplicationController
 
   # INDEX
   get "/cats" do
     @cats = Cat.all
-    erb :index
+    erb :"cats/index"
   end
 
   # NEW 
   get "/cats/new" do  
-    erb :new
+    erb :"cats/new"
   end
 
   # SHOW
   get "/cats/:id" do
     @cat = Cat.find(params[:id])
-    erb :show
+    @welcome = 'some welcome'
+    erb :"cats/show"
   end
 
   # EDIT
   get "/cats/:id/edit" do   
     @cat = Cat.find(params[:id])
-    erb :edit
+    erb :"cats/edit"
   end 
 
   #CREATE
@@ -40,8 +32,8 @@ class ApplicationController < Sinatra::Base
 
   #UPDATE
   patch "/cats/:id" do
-    @cat = Cat.find(params[:id])
-    @cat.update(params[:cat])
+    cat = Cat.find(params[:id])
+    cat.update(params[:cat])
 
     redirect "/cats/#{@cat.id}"
   end 
@@ -52,5 +44,4 @@ class ApplicationController < Sinatra::Base
 
     redirect '/cats'
   end
-
-end
+end 

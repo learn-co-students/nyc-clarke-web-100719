@@ -1,0 +1,15 @@
+<h3>Add a New Trainer</h3>
+
+<form action="/trainers" method='POST'>
+  <input type="text" name="trainer[name]" placeholder="Name">
+  <input type="text" name="trainer[img_url]" placeholder="Trainer Pic">
+
+
+  <select name="trainer[cat_id]">
+    <% @cats.each do |cat| %>
+     <option value="<%= cat.id %>"><%= cat.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Create Trainer">
+</form>
