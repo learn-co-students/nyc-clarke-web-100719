@@ -1,0 +1,10 @@
+<h1>All Attendees</h1>
+
+<% @attendees.each do |attendee| %>
+  <div class="attendee">
+    <p><%= link_to attendee.name, attendee %></p>
+    <%= link_to "Delete", attendee_path(attendee), method: 'DELETE' %>
+  </div>
+<% end %>
+
+
