@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  potluck: one
+  attendee: one
+
+two:
+  name: MyString
+  potluck: two
+  attendee: two

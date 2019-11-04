@@ -1,0 +1,11 @@
+<h1>Potluck Attendees</h1>
+
+<div class='group-container'>
+  <% @attendees.each do |attendee| %>
+    <div class="group-item">
+      <p><%= link_to attendee.name, attendee %></p>
+      <img calss='index-img' src="<%= attendee.img_url %>" alt="<%= attendee.name %>">
+      <%= link_to "Delete", attendee_path(attendee), method: 'DELETE' %>
+    </div>
+  <% end %>
+</div>

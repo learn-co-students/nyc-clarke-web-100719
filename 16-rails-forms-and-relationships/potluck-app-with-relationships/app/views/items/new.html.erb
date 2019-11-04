@@ -1,0 +1,16 @@
+<%= form_for @item do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.collection_select :attendee_id, @attendees,:id, :name %>
+  <%= f.collection_select :potluck_id, @potlucks, :id, :title %>
+  <%= f.submit %>
+<% end %>
+
+<!--
+  <select name='attendee_id'>
+    <% Attendee.all.each do  |attendee| %> 
+      <option value="<%= attendee.id %>"> attendee </option>
+     <% end %>
+  </select>
+
+  -->
