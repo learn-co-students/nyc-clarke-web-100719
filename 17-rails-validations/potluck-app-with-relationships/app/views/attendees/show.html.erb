@@ -1,0 +1,42 @@
+<h1>Profile for <%= @attendee.name %></h1>
+<p>Age: <%= @attendee.age %></p>
+<p>Slogan: <%= @attendee.slogan %></p>
+
+<marquee>
+  <h3>🍕🍔🌮🌭🌽🍗🍤🧀🍣🍟🥐</h3>
+  <img class='show-pic' src="<%= @attendee.img_url %>" alt="<%=@attendee.name %>">
+  <h3>🍕🍔🌮🌭🌽🍗🍤🧀🍣🍟🥐</h3>
+</marquee>
+
+<%= link_to "Create New Item", new_item_path %>
+<h1>Potlucks I am Attending!!!</h1>
+
+
+
+<!-- DISPLAY JUST THE POTLUCKS (This is what we finished in class)-->
+<!--
+<% @attendee.potlucks.uniq.each do |potluck| %>
+  <h4><%= potluck.title %></h4>
+<% end %>
+-->
+
+<!-- DISPLAY POTLUCKS AND FOOD YOU ARE BRINGING (started this did not finish in class)-->
+<% @attendee.potlucks.uniq.each do |potluck| %>
+  <hr>  
+  <h3><%= potluck.title %></h3>
+
+  <% itemList = potluck.items.select do |item| %>
+    <% item.attendee === @attendee %>
+  <% end %>
+
+  <p>Bringing:</p>
+  <ul>
+    <% itemList.each do |item| %>
+      <li><%= item.name %></li>
+    <% end  %>
+  </ul>
+<% end %>
+
+
+
+

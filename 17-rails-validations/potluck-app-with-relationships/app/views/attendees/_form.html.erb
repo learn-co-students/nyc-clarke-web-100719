@@ -1,0 +1,25 @@
+<% if flash[:messages] %>
+  <ul>
+    <% flash[:messages].each do |message|  %>
+      <li><%= message %></li>
+    <% end  %> 
+  </ul>
+<% end  %>
+
+
+<%= form_for @attendee do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :slogan %>
+  <%= f.text_field :slogan %>
+
+  <%= f.label :img_url %>
+  <%= f.text_field :img_url %>
+
+  <%= f.label :age %>
+  <%= f.number_field :age %>
+
+  <%= f.submit %>
+
+<% end %>

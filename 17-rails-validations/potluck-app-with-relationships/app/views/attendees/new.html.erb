@@ -1,0 +1,64 @@
+<h1>New Attendee</h1>
+
+<%= render 'form' %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%# form_with is just a combination of form_for and form_tag, and behaves differently depending on what you put as an input %>
+
+<%#= form_tag '/attendees', method: 'post' do %>
+  <%#= label_tag "Name" %>
+  <%#= text_field_tag "name" %>
+
+  <%#= label_tag "contribution" %>
+  <%#= text_field_tag "contribution" %>
+
+  <%#= submit_tag "Add Attendee" %>
+
+<%# end %>
+
+
+
+<!--
+<form action="/attendees" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <label>Name</label>
+  <input type="text" name="name">
+  <label>Contribution</label>
+  <input type="text" name="contribution">
+  
+  <button type="submit">Create Attendee</button>
+</form>
+-->
