@@ -1,0 +1,9 @@
+<h1>Myth'd Opportunies 😏</h1>
+Your Score: <%= session[:score] || 0 %>
+
+<hr>
+
+<%= @trivia_question["question"] %>
+<% @choices.each do |choice| %>
+  <p> <%= link_to choice, "/answer?answer=#{choice}" %> </p>
+<% end %>
