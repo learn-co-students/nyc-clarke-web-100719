@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ColorLiker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <header>
+
+        <%= link_to "Log in", new_login_path %>
+        <%= link_to "Sign up", new_user_path %>
+      
+
+      <% if @notification %>
+        <p class="message">
+          <%= @notification %>
+        </p>
+      <% end %>
+      <% if @errors && @errors.any? %>
+      <ul class="errors">
+        <% @errors.each do |error| %>
+        <li>
+          <%= error %>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
+      <!-- <h2>Votes remaining: <%= @remaining_votes %></h2> -->
+    </header>
+    <%= yield %>
+  </body>
+</html>
