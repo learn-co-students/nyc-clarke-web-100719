@@ -12,9 +12,14 @@
   <body>
    <header>
 
+    <% if @logged_in_user %>
+      <h6>Logged in User: <%= @logged_in_user.username %></h6>
+      <%= button_to "Logout", {:controller => :login,
+      :action => 'destroy', :id => @logged_in_user.id }, :method => :delete %>
+    <% else %>
         <%= link_to "Log in", new_login_path %>
         <%= link_to "Sign up", new_user_path %>
-      
+     <% end  %> 
 
       <% if @notification %>
         <p class="message">

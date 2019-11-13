@@ -8,7 +8,7 @@ class LoginController < ApplicationController
     user = User.find_by(username: params[:username])
     
     if user && user.authenticate(params[:password])
-      # session[:user_id] = user.id
+      session[:user_id] = user.id
       redirect_to colors_path
     else
       flash[:errors] = ["You screwed that up somehow."]
@@ -16,9 +16,10 @@ class LoginController < ApplicationController
     end
   end
 
-  # def destroy
-  #   session[:user_id] = nil
-  #   redirect_to colors_path
-  # end
+  def destroy
+    session[:user_id] = nil
+    redirect_to colors_path
+  end
+
 
 end
