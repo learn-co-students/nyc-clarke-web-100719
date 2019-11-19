@@ -1,10 +1,10 @@
 # Browser Events
 
 ## SWBATs
-- [ ] Use events to allow user interaction with the page
-- [ ] Identify important attributes on the event object and their uses
-- [ ] Identify commonly used event listeners
-- [ ] Synthesize knowledge of DOM manipulation and events to allow user interaction to change DOM
+- [x] Use events to respond to user interaction with the page
+- [x] Identify important attributes on the event object and their uses
+- [x] Identify commonly used event listeners
+- [x] Synthesize knowledge of DOM manipulation and events to allow user interaction to change DOM
 
 
 3 things that JS allows us to do:
@@ -13,7 +13,18 @@
 3. Run requests
 
 ### What are some common things users do on a webpage
-
+1. submit forms
+2. click buttons
+3. scroll
+4. search for stuff
+    a. click into search bar
+    b. type some stuff
+    c. submit
+5. click to links to go to next page 
+    a. opening new tab 
+6. key presses 
+7. zoom 
+8. hover / mouse over and mouse away 
 
 
 
