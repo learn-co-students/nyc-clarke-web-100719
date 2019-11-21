@@ -8,6 +8,10 @@
 - [ ] Synthesize knowledge of DOM manipulation with asynchronous javascript
 - [ ] **BONUS** Use `catch` to handle errors in promises
 
+
+
+
+
 ## JSON Server
 `npm install -g json-server`
 `json-server --watch db.json`
