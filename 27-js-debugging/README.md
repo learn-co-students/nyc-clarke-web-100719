@@ -1,10 +1,12 @@
 # Squashing Bugs in JS
 
 ## Agenda
+- Async, Defer & DOMContentLoaded
 - Intro to topics & techniques you can use
 - Demo debugging in Monster app
 - Pair practice debugging in Monster app
 - Review practice
+- Interpolation
 - (Time permitting) Live debug some real 🐛s you're having
 
 ## Topics / Techniques
@@ -49,3 +51,8 @@ There are more bugs 🦟🐛🕷🐞🐜🐛(and UX fails)... some of which I've
 4. [HARDER... probably] Once you can post a monster... take a look at the JSON and notice some data differences. Fix them.
 5. [HARDER... probably] Once you can post a monster... we can submit monsters without names. Let's not do that. 
 6. [HARDER] If anything happens to make the POST request fail, we don't alert the user. We as developers know to check the console, but the user wouldn't. Improve the UX. 
+
+
+
+## Misc Resources
+- [Loading your scripts: async & defer](https://flaviocopes.com/javascript-async-defer/)

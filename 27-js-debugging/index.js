@@ -37,7 +37,8 @@ const createMonsterForm = function(){
         nameInput = document.createElement('input'),
         ageInput = document.createElement('input'),
         descriptionInput = document.createElement('input'),
-        submit = document.createElement('button');
+        submit = document.createElement('button'); 
+
 
     form.setAttribute('id','monster-form');
     nameInput.setAttribute('id','name')
@@ -49,7 +50,12 @@ const createMonsterForm = function(){
     submit.setAttribute('id', 'submit')
     submit.innerHTML = 'Create';
 
-    form.appendChild(nameInput).appendChild(ageInput).appendChild(descriptionInput).appendChild(submit); 
+    // form.appendChild(nameInput)
+    // form.appendChild(ageInput)
+    // form.appendChild(descriptionInput)
+    // form.appendChild(submit); 
+    
+    [nameInput, ageInput, descriptionInput, submit].forEach(function(node) { form.appendChild(node) })
 
     document.getElementById('create-monster').appendChild(form);
     addSubmitEventListener()
@@ -123,3 +129,4 @@ const init = function(){
 
 /********************************* DOMCONTENTLOADED LISTENER ******************************/
 document.addEventListener('DOMContentLoaded', init); 
+// init()

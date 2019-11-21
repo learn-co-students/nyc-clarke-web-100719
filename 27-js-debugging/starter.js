@@ -40,12 +40,9 @@ const createMonsterForm = function(){
         submit = document.createElement('button');
 
     form.setAttribute('id','monster-form');
-    nameInput.setAttribute('id','name')
-    nameInput.setAttribute('placeholder', 'name...');
-    ageInput.setAttribute('id','age')
-    ageInput.setAttribute('placeholder', 'age...');
-    descriptionInput.setAttribute('id','description')
-    descriptionInput.setAttribute('placeholder', 'description...');
+    nameInput.setAttribute('id','name').setAttribute('placeholder', 'name...');
+    ageInput.setAttribute('id','age').setAttribute('placeholder', 'age...');
+    descriptionInput.setAttribute('id','description').setAttribute('placeholder', 'description...');
     submit.setAttribute('id', 'submit')
     submit.innerHTML = 'Create';
 
