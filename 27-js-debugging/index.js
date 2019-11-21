@@ -1,4 +1,4 @@
-const URL_PREFIX = 'http://localhost:3000/';
+const URL_PREFIX = 'http://localhost:3001/';
 let page = 1;
 
 
@@ -17,18 +17,27 @@ function getMonsters(pageNum) {
 
 /********************************* DISPLAYING FUNCTIONS ******************************/
 function createMonsterCard(monster){
-    let container = document.createElement('div'),
-        name = document.createElement('h2'),
-        age = document.createElement('img'),
-        description = document.createElement('p');
+    // let container = document.createElement('div'),
+    //     name = document.createElement('h2'),
+    //     age = document.createElement('h3'),
+    //     description = document.createElement('p');
 
-    name.innerHTML = `${monster.name}`;
-    age.innerHTML = `Age: ${monster.age}`;
-    description.innerHTML = `Bio: ${monster.description}`;
-    container.appendChild(name);
-    container.appendChild(age);
-    container.appendChild(description);
-    document.querySelector('#monster-container').appendChild(container)
+    let monsterHTML = `<div>
+        <h2>${monster.name}</h2>
+        <h3>${monster.age}</h3>
+        <p>Bio: ${monster.description}</p>
+    </div>`
+
+    // container
+    // name.innerHTML = `${monster.name}`;
+    // age.innerHTML = `Age: ${monster.age}`;
+    // description.innerHTML = `Bio: ${monster.description}`;
+    // container.appendChild(name);
+    // container.appendChild(age);
+    // container.appendChild(description);
+
+    document.querySelector('#monster-container').insertAdjacentHTML('beforeend', monsterHTML)
+    // document.querySelector('#monster-container').appendChild(container)
 }
 
 /********************************* NEW MONSTER RELATED FUNCTIONS ******************************/
@@ -54,7 +63,7 @@ const createMonsterForm = function(){
     // form.appendChild(ageInput)
     // form.appendChild(descriptionInput)
     // form.appendChild(submit); 
-    
+
     [nameInput, ageInput, descriptionInput, submit].forEach(function(node) { form.appendChild(node) })
 
     document.getElementById('create-monster').appendChild(form);
@@ -65,7 +74,11 @@ const addSubmitEventListener = function(){
     document.querySelector('#monster-form').addEventListener('submit', function(event){ 
         event.preventDefault();
         console.log('submitted',getFormData());
-        postNewMonster(getFormData());
+        if(getFormData().name.length <= 3){
+            alert('A name must be longer than 3 characters')
+        } else {
+            postNewMonster(getFormData());
+        }
         clearForm()
     })
 }
@@ -75,15 +88,15 @@ const getFormData = function(){
         age = document.querySelector('#age'),
         description = document.querySelector('#description');
 
-        return{
+        return {
             name: name.value,
-            age: age.value, 
+            age: parseFloat(age.value), 
             description: description.value
         }
 }
 
 function postNewMonster(monsterObj){
-    let url = URL_PREFIX + `/monsters`,
+    let url = URL_PREFIX + `monsters`, // PROBLEM 3 ANSWER: there were too many '/'s
         requestOptions = {
             method: 'POST',
             headers:{
@@ -95,6 +108,10 @@ function postNewMonster(monsterObj){
     fetch(url, requestOptions)
         .then(function(response){  return response.json()})
         .then(function(data){ console.log('new monster', data) }) 
+        .catch(function(error) { 
+            // debugger;
+            alert(`womp womp do better:  ${error.message}`) 
+        })
 }
 
 const clearForm = function(){ document.querySelector('#monster-form').reset() }
@@ -104,6 +121,12 @@ const clearForm = function(){ document.querySelector('#monster-form').reset() }
 const addNavListeners = function(){
     let backButton=document.querySelector('#back'),
         forwardButton=document.querySelector('#forward');
+
+    
+    // Problem 2 V2: backButton.disabled = true;
+    // in page down if setting page to 1, disable backButton again. 
+    // in page up enable backButton 
+
     backButton.addEventListener('click',()=>{pageDown()});
     forwardButton.addEventListener('click',()=>{pageUp()});
 }
@@ -112,10 +135,13 @@ const setPageNum = (page) => {
     pageNumElement.innerHTML = page
 }
 const pageUp = function(){ page++; getMonsters(page); setPageNum(page) }
+
 const pageDown = function(){
+    if(page > 1){
         page--; 
         getMonsters(page);
         setPageNum(page)
+    }
 }
 
 const init = function(){
