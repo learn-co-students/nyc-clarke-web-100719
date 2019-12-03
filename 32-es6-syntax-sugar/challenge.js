@@ -28,12 +28,13 @@ function renderSinglePokemon(pokemon) {
      * Takes a pokemon object with keys name (string), id (int) and sprites (object with keys front and back strings)
      * returns string of HTML for pokemon 
      */
+    const { id, name:{front, last, middle}, sprites: {front}} = pokemon 
     return (`
-    <div class="pokemon-card" id=${pokemon.id}>
+    <div class="pokemon-card" id=${id}>
       <div class="pokemon-frame">
-        <h1 class="center-text">${pokemon.name}</h1>
+        <h1 class="center-text">${front} ${sprites}</h1>
         <div class="pokemon-image">
-          <img data-id="${pokemon.id}" data-action="flip" class="toggle-sprite" src="${pokemon.sprites.front}">
+          <img data-id="${id}" data-action="flip" class="toggle-sprite" src="${front}">
         </div>
         <button data-action="delete" class="pokemon-button">Delete</button>
       </div>
@@ -42,7 +43,7 @@ function renderSinglePokemon(pokemon) {
 
   const BULBASAUR = {
       id: 1,
-      name: 'Bulbasaur',
+      name: {front: 'Bulbasaur', last: "Ketchum"},
       sprites: {
           front: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
           back: ''
@@ -61,17 +62,19 @@ function addNewPokemon(){
 
     // helper lines of code
     let document = {}
-    document.getElementById = () => {return {value: undefined}}
+    // document.getElementById = () => {return {value: undefined}}
+    document.getElementById = () => ({value: undefined})
+
     // helper lines of code
 
 
     let name = document.getElementById('name-input').value || 'Sebastian'
-    let sprite = document.getElementById('sprite-input').value || 'https://cdn.pixabay.com/photo/2013/07/13/13/32/demon-161049_960_720.png'
+    let front = document.getElementById('sprite-input').value || 'https://cdn.pixabay.com/photo/2013/07/13/13/32/demon-161049_960_720.png'
 
     let requestBody = JSON.stringify({
-        'name': name,
+        name,
         'sprites': {
-          'front': sprite,
+          front
         }
       })
 
@@ -86,6 +89,7 @@ console.log('******************************\n')
 
 /***************** CHALLENGE 3 *****************/
 function fizzBuzzSingle(num){
+    // TERNARY...... SO GROSS THO
     /** if multiple of 3 print fizz, if multiple of 5 print buzz, if both fizzbuzz */
     if( num%3 === 0 && num%5 === 0 ){
         console.log('FizzBuzz')
@@ -112,23 +116,24 @@ console.log('******************************\n')
 /***************** CHALLENGE 4 *****************/
 
 function removeIdentifiers(person) {
-    if(person['name']){
-        delete person['name']
-    }
-    if (person['gender']){
-        delete person['gender']
-    }
-    if (person['age']){
-        delete person['age']
-    }
-    return person
+    const {name, gender, age, ...theRest} = person
+    // if(person['name']){
+    //     delete person['name']
+    // }
+    // if (person['gender']){
+    //     delete person['gender']
+    // }
+    // if (person['age']){
+    //     delete person['age']
+    // }
+    return theRest
 }
 
 let gryffindor = [
-    {name: 'Hermione', age:'16', gender: 'F', avg: 'A', pet: 'cat'},
-    {name: 'Ron', age:'17', gender: 'M', avg: 'C', pet: 'rat'},
-    {name: 'Harry', age:'16', gender: 'M', avg: 'B', pet: 'owl'},
-    {name: 'Ginny', age:'13', gender: 'F', avg: 'B-', pet: 'lizard'},
+    {name: 'Hermione', age:'16', gender: 'F', avg: 'O', pet: 'cat'},
+    {name: 'Ron', age:'17', gender: 'M', avg: 'T', pet: 'rat'},
+    {name: 'Harry', age:'16', gender: 'M', avg: 'EE', pet: 'owl'},
+    {name: 'Ginny', age:'14', gender: 'F', avg: 'A', pet: 'lizard'},
 ]
 
 console.log('********** PROBLEM 4 **********\n')
@@ -152,6 +157,8 @@ const birthdays= [
 // new Date(year, month, day, hours, minutes, seconds, milliseconds)
 
 const jsDateBdays = birthdays.map(function([year, month, day]) {return new Date(year, month, day)})
+const jsDateBdays = birthdays.map(function(dateInfo) {return new Date(...dateInfo)})
+
 
 console.log('********** PROBLEM 5 **********\n')
 console.log(jsDateBdays)
