@@ -1,16 +1,12 @@
 const defaultState = {
-  likes: 0,
+  likes: 2000,
   text: "",
   darkMode: false,
-  thangs: []
+  thangs: [],
+  beef: "steak"
 }
 
-// job is to return new state
 function reducer(prevState = defaultState, action){
-  // console.log("STATE", prevState)
-  // console.log("ACTION", action)
-
-  // whatever is returned from this function BECOMES your new state
   switch(action.type){
     case "LIKE":
       return {...prevState, likes: prevState.likes + 1}
@@ -19,7 +15,7 @@ function reducer(prevState = defaultState, action){
     case "DARK_MODE":
       return {...prevState, darkMode: !prevState.darkMode}
     case "CHANGE_TEXT":
-      return {...prevState, text: action.payload.newText}
+      return {...prevState, [action.payload.name]: action.payload.newText}
     case "ADD_THANG":
       return {...prevState, thangs: [...prevState.thangs, prevState.text], text: ""}
     default: 
